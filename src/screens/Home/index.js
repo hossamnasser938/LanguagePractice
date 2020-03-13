@@ -1,13 +1,18 @@
 import React from 'react';
-import {SafeAreaView, View} from 'react-native';
-import {WordMissingChar} from '../../components/WordMissingChar';
-import {WordsGroup} from '../../components/WordsGroup';
+import {SafeAreaView, Text} from 'react-native';
+import {UNITS} from '../../utils/data';
+import {Unit} from '../../components/Unit';
 import styles from './styles';
 
 export const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.innerContainer}>
+      <Text style={styles.mainText}>Pick a challenge</Text>
+      {UNITS.map(unit => (
+        <Unit unit={unit} />
+      ))}
+
+      {/* <View style={styles.innerContainer}>
         <WordMissingChar word="spring" missingCharIndex={2} />
 
         <View style={styles.horizontalLine} />
@@ -16,7 +21,7 @@ export const HomeScreen = () => {
           wordsInGroup={['spring', 'fall', 'autumn', 'summer', 'winter']}
           wordsOutOfGroup={['Tiger', 'parrot', 'eagle']}
         />
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };
