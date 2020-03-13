@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>476232384872-vjjk2gs4t9jk5p4ru5lco64plusm2bj1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.476232384872-vjjk2gs4t9jk5p4ru5lco64plusm2bj1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDq9IwrPsuKdRHJNVX2sRVdnpNBCAjXkbg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>476232384872</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.LangaugePractice</string>
+	<key>PROJECT_ID</key>
+	<string>languagepractice-4e318</string>
+	<key>STORAGE_BUCKET</key>
+	<string>languagepractice-4e318.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:476232384872:ios:25de0181f597788bced6dd</string>
+	<key>DATABASE_URL</key>
+	<string>https://languagepractice-4e318.firebaseio.com</string>
+</dict>
+</plist>

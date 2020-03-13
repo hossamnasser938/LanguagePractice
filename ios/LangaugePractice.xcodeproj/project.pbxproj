@@ -19,6 +19,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* LangaugePracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LangaugePracticeTests.m */; };
 		4AA1CC0733C1C57ABBA7FAD4 /* libPods-LangaugePractice-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D8A4DB99D3CAF79D06909D /* libPods-LangaugePractice-tvOS.a */; };
 		8FC24EC21B235EAEC81A6660 /* libPods-LangaugePracticeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 535F76AE4B7858DCDA34B773 /* libPods-LangaugePracticeTests.a */; };
+		9FAEA379241BE1EF00CFDE25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FAEA378241BE1EF00CFDE25 /* GoogleService-Info.plist */; };
 		F3B94F2982BDF7DA0289867B /* libPods-LangaugePractice-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF1B2FABF69A88E8741F3D5 /* libPods-LangaugePractice-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		5F2147194B8C1A5526D6216C /* Pods-LangaugePractice-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LangaugePractice-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-LangaugePractice-tvOSTests/Pods-LangaugePractice-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69F9E19B332559B95ECDBACA /* Pods-LangaugePractice-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LangaugePractice-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-LangaugePractice-tvOSTests/Pods-LangaugePractice-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		6C4BB1D7ED006D76745C4EAA /* Pods-LangaugePracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LangaugePracticeTests.release.xcconfig"; path = "Target Support Files/Pods-LangaugePracticeTests/Pods-LangaugePracticeTests.release.xcconfig"; sourceTree = "<group>"; };
+		9FAEA378241BE1EF00CFDE25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFF1B2FABF69A88E8741F3D5 /* libPods-LangaugePractice-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LangaugePractice-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08BC236D8E5EB0637EA1459 /* Pods-LangaugePractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LangaugePractice.release.xcconfig"; path = "Target Support Files/Pods-LangaugePractice/Pods-LangaugePractice.release.xcconfig"; sourceTree = "<group>"; };
 		C3E936FAE8EAF5EE633C3C9C /* Pods-LangaugePracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LangaugePracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-LangaugePracticeTests/Pods-LangaugePracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		13B07FAE1A68108700A75B9A /* LangaugePractice */ = {
 			isa = PBXGroup;
 			children = (
+				9FAEA378241BE1EF00CFDE25 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -161,7 +164,6 @@
 				C3E936FAE8EAF5EE633C3C9C /* Pods-LangaugePracticeTests.debug.xcconfig */,
 				6C4BB1D7ED006D76745C4EAA /* Pods-LangaugePracticeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +310,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,6 +341,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				9FAEA379241BE1EF00CFDE25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

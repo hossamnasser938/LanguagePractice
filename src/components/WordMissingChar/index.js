@@ -23,7 +23,6 @@ export const WordMissingChar = props => {
     <View style={styles.container}>
       {word.split('').map((char, index) => {
         if (index === missingCharIndex) {
-          console.log('answeredCorrectly', answeredCorrectly);
           return answeredCorrectly !== null ? (
             <Text style={styles.char}>
               <Text>{missingChar} </Text>

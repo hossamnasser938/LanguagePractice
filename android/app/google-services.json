@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "476232384872",
+    "firebase_url": "https://languagepractice-4e318.firebaseio.com",
+    "project_id": "languagepractice-4e318",
+    "storage_bucket": "languagepractice-4e318.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476232384872:android:ef488a1ae3200df5ced6dd",
+        "android_client_info": {
+          "package_name": "com.langaugepractice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476232384872-7kph1id9rj2ru6nih5jq0gqpptrs4oif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFX9hvpTNoTiAZLgbNlolUi7yZ0-1oy9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476232384872-7kph1id9rj2ru6nih5jq0gqpptrs4oif.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "476232384872-vjjk2gs4t9jk5p4ru5lco64plusm2bj1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.LangaugePractice"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
