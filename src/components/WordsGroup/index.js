@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import styles from './styles';
 
@@ -6,11 +6,11 @@ export const WordsGroup = props => {
   const {wordsInGroup, wordsOutOfGroup} = props;
 
   const [selectedWords, setSelectedWords] = useState([]);
-  const [didEvaluate, setDidEvaluate] = useState(false);
-  const [evaluatedCorrectly, setEvaluatedCorrectly] = useState(null);
+  const [didSubmit, setDidSubmit] = useState(false);
+  const [submitteddCorrectly, setSubmittedCorrectly] = useState(null);
 
   const selectDeselectWordHandler = word => {
-    if (didEvaluate) {
+    if (didSubmit) {
       return;
     }
 
@@ -21,16 +21,16 @@ export const WordsGroup = props => {
     }
   };
 
-  const evaluateHandler = () => {
+  const submitHandler = () => {
     const success =
       selectedWords.length === wordsInGroup.length &&
       selectedWords.reduce((acc, item) => {
         return wordsInGroup.includes(item) && acc;
       }, true);
 
-    setDidEvaluate(true);
+    setDidSubmit(true);
 
-    setEvaluatedCorrectly(success);
+    setSubmittedCorrectly(success);
   };
 
   return (
@@ -55,19 +55,19 @@ export const WordsGroup = props => {
                 onPress={() => selectDeselectWordHandler(word)}>
                 {word}
               </Text>
-              {didEvaluate && <Text>{isCorrect ? '✅' : '❌'}</Text>}
+              {didSubmit && <Text>{isCorrect ? '✅' : '❌'}</Text>}
             </View>
           );
         })}
       </View>
 
-      {didEvaluate ? (
-        <Text>{evaluatedCorrectly ? '✅' : '❌'}</Text>
+      {didSubmit ? (
+        <Text>{submitteddCorrectly ? '✅' : '❌'}</Text>
       ) : (
         <Button
-          disabled={didEvaluate || selectedWords.length === 0}
-          title="Evaluate"
-          onPress={evaluateHandler}
+          disabled={didSubmit || selectedWords.length === 0}
+          title="Submit"
+          onPress={submitHandler}
         />
       )}
     </View>
