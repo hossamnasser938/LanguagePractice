@@ -4,11 +4,13 @@ import {HomeScreen} from '../../screens/Home';
 import {MissingCharChallengeScreen} from '../../screens/MissingCharChallenge';
 import {WordsGroupChallengeScreen} from '../../screens/WordsGroupChallenge';
 
+import {AuthScreen} from '../../screens/Auth';
+
 const Stack = createStackNavigator();
 
-export const MainStack = () => {
+export const MainStack = props => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={props.initialRouteName}>
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
@@ -21,6 +23,11 @@ export const MainStack = () => {
       <Stack.Screen
         name="WordsGroupChallengeScreen"
         component={WordsGroupChallengeScreen}
+      />
+      <Stack.Screen
+        name="AuthScreen"
+        component={AuthScreen}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

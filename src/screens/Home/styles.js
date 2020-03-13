@@ -13,11 +13,16 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#bbb',
   },
+  textsWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+  },
   mainText: {
     color: '#bbb',
     fontSize: 24,
     fontWeight: 'bold',
-    padding: 10,
     marginVertical: 20,
   },
 });
