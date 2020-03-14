@@ -3,7 +3,7 @@ import {View, Text, TextInput} from 'react-native';
 import styles from './styles';
 
 export const WordMissingChar = props => {
-  const {word, missingCharIndex} = props;
+  const {word, missingCharIndex, onSuccess, onAnswer} = props;
   const missingChar = word.charAt(missingCharIndex);
 
   const [charTyped, setCharTyped] = useState('');
@@ -11,7 +11,9 @@ export const WordMissingChar = props => {
 
   useEffect(() => {
     if (charTyped) {
+      onAnswer();
       if (charTyped === missingChar) {
+        onSuccess();
         setAnsweredCorrectly(true);
       } else {
         setAnsweredCorrectly(false);

@@ -57,3 +57,36 @@ export const listenOnCompetitionEnter = sessionKey => {
       }
     });
 };
+
+export const pushPoints = (sessionKey, points) => {
+  const userId = firebase.auth().currentUser.uid;
+
+  return firebase
+    .database()
+    .ref('sessions')
+    .child(sessionKey)
+    .child(userId)
+    .set(points)
+    .catch(e => {
+      alert('Unexpected error occurred');
+    });
+};
+
+export const listenOnOponentPoints = (sessionKey, onSet) => {
+  const userId = firebase.auth().currentUser.uid;
+
+  firebase
+    .database()
+    .ref('sessions')
+    .child(sessionKey)
+    .on('child_changed', dataSnapshot => {
+      if (dataSnapshot.key !== userId) {
+        onSet(dataSnapshot.val());
+        firebase
+          .database()
+          .ref('sessions')
+          .child(sessionKey)
+          .off('child_changed');
+      }
+    });
+};
