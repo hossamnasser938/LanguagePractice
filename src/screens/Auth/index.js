@@ -3,11 +3,11 @@ import {
   SafeAreaView,
   View,
   Text,
-  Button,
   TextInput,
   ActivityIndicator,
   Switch,
 } from 'react-native';
+import {Button} from '../../components/Button';
 import firebase from 'react-native-firebase';
 import {push} from '../../navigation/NavigationService';
 import styles from './styles';

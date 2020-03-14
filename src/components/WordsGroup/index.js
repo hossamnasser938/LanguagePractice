@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
+import {Button} from '../Button';
 import styles from './styles';
 
 export const WordsGroup = props => {
