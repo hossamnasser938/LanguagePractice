@@ -1,9 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   innerContainer: {
     height: 400,
     justifyContent: 'space-around',

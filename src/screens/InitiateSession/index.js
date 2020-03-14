@@ -7,6 +7,7 @@ import {
   listenOnCompetitionEnter,
 } from '../../services/database';
 import {push} from '../../navigation/NavigationService';
+import {UNITS} from '../../utils/data';
 import styles from './styles';
 
 export const InitiateSessionScreen = props => {
@@ -15,6 +16,7 @@ export const InitiateSessionScreen = props => {
   const [sessionKey, setSessionKey] = useState('');
   const [loading, setLoading] = useState(false);
   const [waiting, setWaiting] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState(0);
 
   const submitHandler = () => {
     if (sessionKey) {
@@ -30,7 +32,7 @@ export const InitiateSessionScreen = props => {
     setLoading(true);
     try {
       await createSession(sessionKey);
-      listenOnCompetitionEnter(sessionKey);
+      listenOnCompetitionEnter(sessionKey, selectedUnit);
       setWaiting(true);
       setLoading(false);
     } catch (e) {
@@ -42,11 +44,11 @@ export const InitiateSessionScreen = props => {
   const joinSessionHandler = async () => {
     setLoading(true);
     try {
-      const result = await joinSession(sessionKey);
+      const {result, unitIndex} = await joinSession(sessionKey);
       setLoading(false);
       switch (result) {
         case 'joined':
-          push('CompetitionScreen', {sessionKey});
+          push('CompetitionScreen', {sessionKey, unitIndex});
           break;
         case 'not_exist':
           alert('Session with key ' + sessionKey + ' does not exist');
@@ -69,6 +71,32 @@ export const InitiateSessionScreen = props => {
         <Text>Wait until your oponent enter</Text>
       ) : (
         <View>
+          {type === 'start' && (
+            <View style={{paddingVertical: 20}}>
+              <Text>Choose a unit to compete on</Text>
+              <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+                {UNITS.map((unit, index) => (
+                  <View
+                    style={{
+                      borderColor: index === selectedUnit ? 'green' : '#bbb',
+                      borderWidth: 1,
+                      borderRadius: 5,
+                      marginVertical: 10,
+                      marginEnd: 10,
+                    }}>
+                    <Text
+                      style={{
+                        color: index === selectedUnit ? 'green' : '#bbb',
+                        padding: 10,
+                      }}
+                      onPress={() => setSelectedUnit(index)}>
+                      {unit.title}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
           <TextInput
             style={styles.input}
             placeholder={

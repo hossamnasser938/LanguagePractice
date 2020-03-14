@@ -23,7 +23,7 @@ export const joinSession = async sessionKey => {
       .once('value');
 
     if (!session.exists()) {
-      return 'not_exist';
+      return {result: 'not_exist'};
     } else {
       await firebase
         .database()
@@ -32,29 +32,45 @@ export const joinSession = async sessionKey => {
         .child(userId)
         .set(0);
 
-      return 'joined';
+      const unitIndex = await firebase
+        .database()
+        .ref('unitIndex')
+        .child(sessionKey)
+        .once('value');
+
+      return {result: 'joined', unitIndex: unitIndex.val()};
     }
   } catch (e) {
-    return 'error';
+    return {result: 'error'};
   }
 };
 
-export const listenOnCompetitionEnter = sessionKey => {
+export const listenOnCompetitionEnter = (sessionKey, selectedUnitIndex) => {
   const userId = firebase.auth().currentUser.uid;
 
   firebase
     .database()
-    .ref('sessions')
+    .ref('unitIndex')
     .child(sessionKey)
-    .on('child_added', dataSnapshot => {
-      if (dataSnapshot.key !== userId) {
-        push('CompetitionScreen', {sessionKey});
-        firebase
-          .database()
-          .ref('sessions')
-          .child(sessionKey)
-          .off('child_added');
-      }
+    .set(selectedUnitIndex)
+    .then(() => {
+      firebase
+        .database()
+        .ref('sessions')
+        .child(sessionKey)
+        .on('child_added', dataSnapshot => {
+          if (dataSnapshot.key !== userId) {
+            push('CompetitionScreen', {
+              sessionKey,
+              unitIndex: selectedUnitIndex,
+            });
+            firebase
+              .database()
+              .ref('sessions')
+              .child(sessionKey)
+              .off('child_added');
+          }
+        });
     });
 };
 

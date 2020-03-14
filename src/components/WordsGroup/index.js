@@ -4,7 +4,7 @@ import {Button} from '../Button';
 import styles from './styles';
 
 export const WordsGroup = props => {
-  const {wordsInGroup, wordsOutOfGroup} = props;
+  const {wordsInGroup, wordsOutOfGroup, onSuccess, onAnswer} = props;
 
   const [selectedWords, setSelectedWords] = useState([]);
   const [didSubmit, setDidSubmit] = useState(false);
@@ -32,6 +32,10 @@ export const WordsGroup = props => {
     setDidSubmit(true);
 
     setSubmittedCorrectly(success);
+    if (success) {
+      onSuccess();
+    }
+    onAnswer();
   };
 
   return (

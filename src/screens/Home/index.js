@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import {SafeAreaView, View, ScrollView, Text} from 'react-native';
 import {Button} from '../../components/Button';
 import firebase from 'react-native-firebase';
 import {navigate, push} from '../../navigation/NavigationService';
@@ -23,7 +23,7 @@ export const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.textsWrapper}>
         <Text style={styles.mainText}>Pick a challenge</Text>
         <Text onPress={signoutHandler}>Sign out</Text>
@@ -41,6 +41,6 @@ export const HomeScreen = () => {
       {UNITS.map(unit => (
         <Unit unit={unit} />
       ))}
-    </SafeAreaView>
+    </ScrollView>
   );
 };

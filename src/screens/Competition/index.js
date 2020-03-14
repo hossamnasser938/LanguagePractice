@@ -3,14 +3,30 @@ import {Text, View} from 'react-native';
 import {pushPoints, listenOnOponentPoints} from '../../services/database';
 import {displayTimer} from '../../utils/helperFunction';
 import {WordMissingChar} from '../../components/WordMissingChar';
+import {WordsGroup} from '../../components/WordsGroup';
 import {UNITS} from '../../utils/data';
 import styles from './styles';
 import {ScrollView} from 'react-native-gesture-handler';
 
-export const CompetitionScreen = props => {
-  const {sessionKey} = props.route.params;
+const TIME = 120;
 
-  const [timeLeft, setTimeLeft] = useState(60);
+const calculateUnitQuestionsCount = unitIndex => {
+  let count = 0;
+
+  UNITS[unitIndex].collections.forEach(col => {
+    count += 1;
+    count += col.words.length;
+  });
+
+  return count;
+};
+
+export const CompetitionScreen = props => {
+  const {sessionKey, unitIndex} = props.route.params;
+
+  const QUESTIONS_COUNT = calculateUnitQuestionsCount(unitIndex);
+
+  const [timeLeft, setTimeLeft] = useState(TIME);
   const [points, setPoints] = useState(0);
   const [didPushPoints, setDidPushPoints] = useState(false);
   const [oponentPoints, setOponentPoints] = useState(null);
@@ -51,7 +67,7 @@ export const CompetitionScreen = props => {
   }, [timeLeft]);
 
   useEffect(() => {
-    if (answeredQuestions === 5) {
+    if (answeredQuestions === QUESTIONS_COUNT) {
       pushPoints(sessionKey, points);
       if (oponentPoints !== null) {
         showResults();
@@ -60,10 +76,36 @@ export const CompetitionScreen = props => {
   }, [answeredQuestions]);
 
   useEffect(() => {
-    if (oponentPoints !== null && (answeredQuestions === 5 || timeLeft === 0)) {
+    if (
+      oponentPoints !== null &&
+      (answeredQuestions === QUESTIONS_COUNT || timeLeft === 0)
+    ) {
       showResults();
     }
   }, [oponentPoints]);
+
+  const wordMissingQuestions = [];
+  UNITS[unitIndex].collections.forEach(col => {
+    col.words.forEach((word, i) => {
+      wordMissingQuestions.push(
+        <WordMissingChar
+          word={word}
+          missingCharIndex={(word.length + i) % word.length}
+          onSuccess={incrementPoints}
+          onAnswer={incrementAnsweredQuestions}
+        />,
+      );
+    });
+  });
+
+  const wordGroupQuestions = UNITS[unitIndex].collections.map(col => (
+    <WordsGroup
+      wordsInGroup={col.words}
+      wordsOutOfGroup={UNITS[unitIndex].randomWords}
+      onSuccess={incrementPoints}
+      onAnswer={incrementAnsweredQuestions}
+    />
+  ));
 
   return (
     <ScrollView style={styles.container}>
@@ -71,17 +113,8 @@ export const CompetitionScreen = props => {
         <Text>Points: {points}</Text>
         <Text>Time Left: {displayTimer(timeLeft)}</Text>
       </View>
-      {UNITS[0].collections[0].words.map(
-        (word, i) =>
-          i < 5 && (
-            <WordMissingChar
-              word={word}
-              missingCharIndex={(word.length + i) % word.length}
-              onSuccess={incrementPoints}
-              onAnswer={incrementAnsweredQuestions}
-            />
-          ),
-      )}
+      {wordMissingQuestions}
+      {wordGroupQuestions}
     </ScrollView>
   );
 };
