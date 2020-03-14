@@ -82,7 +82,7 @@ export const pushPoints = (sessionKey, points) => {
     .ref('sessions')
     .child(sessionKey)
     .child(userId)
-    .set(points)
+    .set(points === 0 ? '00' : points)
     .catch(e => {
       alert('Unexpected error occurred');
     });

@@ -41,7 +41,7 @@ export const CompetitionScreen = props => {
   };
 
   const showResults = () => {
-    alert('Your Points: ' + points + ' Oponent points: ' + oponentPoints);
+    alert('Your Points: ' + points + ' Oponent points: ' + +oponentPoints);
   };
 
   useEffect(() => {
@@ -69,6 +69,7 @@ export const CompetitionScreen = props => {
   useEffect(() => {
     if (answeredQuestions === QUESTIONS_COUNT) {
       pushPoints(sessionKey, points);
+      setDidPushPoints(true);
       if (oponentPoints !== null) {
         showResults();
       }
